@@ -74,6 +74,9 @@ function factorial(n) {
 // console.log(factorial(10));
 
 
+// Question 8 
+// Question 9 == //maze[row][column] = ' ';
+
 let mySmallMaze = [
   [' ', ' ', ' '],  
   [' ', '*', ' '],
@@ -106,7 +109,7 @@ function findWayOut(maze, position = 0, row, column, direction = 'S', path) {
     findWayOut(maze, position, row -1, column, 'U', path);
     findWayOut(maze, position, row, column +1, 'R', path);
     findWayOut(maze, position, row +1, column, 'D', path);
-    //maze[row][column] = ' ';
+    maze[row][column] = ' ';
   }
   position--;
 }

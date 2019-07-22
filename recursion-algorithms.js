@@ -114,5 +114,64 @@ function findWayOut(maze, position = 0, row, column, direction = 'S', path) {
   position--;
 }
 
-findWayOut(maze, 0 , 0 , 0 , 'S' , [] );
+// findWayOut(maze, 0 , 0 , 0 , 'S' , [] );
 
+function anagrams(pre, str) {
+  if (str.length <= 1) {
+    console.log(`Anagram is ${pre}${str}`);
+  } else {
+    for (let i = 0; i < str.length; i++) {
+      let current = str.substring(i, i + 1);
+      let prev = str.substring(0, i);
+      let after = str.substring(i + 1);
+      anagrams(pre + current, prev + after);
+    }
+  }
+}
+
+// anagrams(' ', 'east');
+
+function organizationChart(data, ind = 0) {
+  const indent = ' '.repeat(ind);
+  if (Array.isArray(data)) {
+    data.map(name => {
+      console.log(`${indent}${name}`);
+    });
+  } else {
+    for (let key in data) {
+      console.log(`${indent}${key}`);
+      organizationChart(data[key], ind + 4);
+    }
+  }
+}
+
+const orgObj = {
+  Zuckerberg: {
+    Schroepfer: {
+      Bosworth: ['Steve', 'Kyle', 'Andra'],
+      Zhao: ['Richie', 'Sofia', 'Jen']
+    },
+    Schrage: {
+      VanDyck: ['Sabrina', 'Michelle', 'Josh'],
+      Swain: ['Blanch', 'Tom', 'Joe']
+    },
+    Sandberg: {
+      Goler: ['Eddie', 'Julie', 'Annie'],
+      Hernandez: ['Rowi', 'Inga', 'Morgan'],
+      Moissinac: ['Amy', 'Chuck', 'Vinni'],
+      Kelley: ['Eric', 'Ana', 'Wes']
+    }
+  }
+};
+
+// organizationChart(orgObj);
+
+function binaryRepresentation(n) {
+  if (n <= 0) {
+    return '';
+  }
+  let binary = n % 2;
+  return binaryRepresentation(Math.floor(n/2)) + binary;
+}
+
+console.log(binaryRepresentation(37));
